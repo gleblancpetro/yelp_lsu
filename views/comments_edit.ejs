@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+
+<div class='container'>
+	<h1>Edit comment</h1>
+	<form action='/players/<%= player._id %>/comments/<%=comment._id%>?_method=PUT' method="POST">
+		<div class="form-group">
+			<label for='text'>Edit Comment </label>
+			<textarea class="form-control" name='text' id='text' rows="8" cols='80' required><%= comment.text%></textarea>
+		</div>
+
+		<button type='submit' class='btn btn-primary'>Submit</button>
+	</form>
+</div>
+
+
+
+
+<%- include('partials/footer') %>

@@ -1,0 +1,57 @@
+<%- include('partials/header') %>
+
+<div class='container'>
+	<h1>Add New Player</h1>
+	<form action='/players' method="POST">
+		
+	  <div class="mb-3">
+		<label for="name" class="form-label">Player Name:</label>
+		<input type="text" class="form-control" name="name" placeholder="e.g. LeBrandon Toefield" autofocus>
+	  </div>
+	  <div class="mb-3">
+		<label for="sport" class="form-label">Sport:</label>
+		  <select type="text" class="form-control" name="sport">
+		  	<option disabled selected>Choose from list</option>	
+		  	<option>Baseball</option>	
+		  	<option>Basketball</option>	
+		  	<option>Football</option>	
+		  	<option>Track</option>	
+		  </select>
+	  </div>
+	  <div class="mb-3">
+		<label for="description" class="form-label">Description:</label>
+		<input type="text" class="form-control" name="description">
+	  </div>
+		
+	  <div class="mb-3">
+		<label for="startDate" class="form-label">Start Date:</label>
+		<input type="date" class="form-control" name="startDate">
+	  </div>
+		
+	  <div class="mb-3">
+		<label for="endDate" class="form-label">End Date:</label>
+		<input type="date" class="form-control" name="endDate">
+	  </div>
+		
+	  <div class="mb-3">
+		<label for="number" class="form-label">Number:</label>
+		<input type="number" class="form-control" name="number">
+	  </div>
+		
+	  <div class="mb-3">
+		<input type="checkbox" class="form-check-input" name="professional">
+		<label for="professional" class="form-label">Professional Career?</label>
+
+		</div>
+	  <div class="mb-3">
+		<label for="image" class="form-label">Image Link:</label>
+		<input type="text" class="form-control" name="image" placeholder="https://www.myimage.com/image.jpg">
+	  </div>
+	  <button type="submit" class="btn btn-warning">Submit</button>
+	</form>
+
+
+</div>
+
+
+<%- include('partials/footer') %>

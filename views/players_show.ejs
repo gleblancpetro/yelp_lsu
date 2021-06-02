@@ -1,0 +1,87 @@
+<%- include('partials/header') %>
+
+<div class='container'>
+	<div class='row mt-4'>
+		<div class='col-6 show_image-container'>
+			<img src="<%= player.image %>">
+		</div>
+		<div class="col-6 show_details container">
+			<h1><%= player.name %></h1>
+				<p> <%= player.description %> </p>
+			
+					<table class="table">
+					  <tbody>
+						<tr>
+						  <th scope="row">Sport</th>
+						  <td><%= player.sport %> </td>
+
+						</tr>
+						<tr>
+						  <th scope="row">Start Date</th>
+						  <td><%= player.startDate %> </td>
+
+						</tr>
+						<tr>
+						  <th scope="row">End Date</th>
+						  <td><%= player.endDate %> </td>
+
+						</tr>
+						<tr>
+						  <th scope="row">Number</th>
+						  <td><%= player.number %> </td>
+						</tr>
+						  
+						<tr>
+						  <th scope="row">Professional</th>
+						  <td><%= player.professional %> </td>
+
+						</tr>
+					  </tbody>
+					</table>
+			<a href="/players/<%=player._id%>/edit">
+			<button class='btn btn-outline-info btn-lg btn-block mb-2'>
+				Edit
+				</button>
+			</a>
+			<form action='/players/<%=player._id%>?_method=DELETE' method="POST">
+				<button type="submit" class='btn btn-outline-danger btn-lg btn-block mb-2'>
+					Delete
+				</button>
+			</form>
+		</div>
+	</div>
+	<div class='row show_comment-header mt-3'>
+		Comments
+	</div>
+	<a href="/players/<%= player._id%>/comments/new">
+	<button class='btn btn-success btn-lg mt-3 mb-4'>
+		Add comment
+		</button>
+	</a>
+	<% comments.forEach((comment => { %>
+
+	<div class='row show_comment-container py-2 border'>
+		<div class='col-2 border-end my-auto'>
+			<%= comment.user.username %>
+		</div>
+		<div class='col-2 border-end my-auto d-flex flex-wrap justify-content-center'>
+			<a class='btn btn-sm btn-success w-75 p-0 my-1' href='/players/<%=player._id%>/comments/<%=comment._id%>/edit'>Edit</a>
+			<form class='w-75 my-1' action='/players/<%=player._id%>/comments/<%=comment._id%>?_method=DELETE' method="POST">
+				<button class='btn btn-sm btn-danger w-100 p-0'>
+					Delete
+				</button>
+			</form>
+		</div>
+		<div class='col-8 my-auto'>
+			<%= comment.text %>
+		</div>
+	</div>
+	<% })) %>
+	<div class='py-5'></div>
+</div>
+
+
+
+<%- include('partials/footer') %>
+
+

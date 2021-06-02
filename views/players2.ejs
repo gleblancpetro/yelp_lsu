@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+
+
+<div class="row row-cols-1 row-cols-md-3">
+
+	<% players.forEach((player) => { %>
+	<div class="col mb-4">
+	  <div class="card">
+		<img class="card-img-top" src="<%= player.image %>" alt="Card image cap">
+		<div class="card-body">
+		  <h5 class="card-title"><%= player.name %></h5>
+		  <p class="card-text"><%= player.description %></p>
+		  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+		</div>
+	  </div>
+	</div>
+
+
+
+					<% }) %>
+					
+	</div>
+					
+				
+<%- include('partials/footer') %>
+
+
+
+
+<!-- 					
+					< player.image %>
+					< player.name %>
+					< player.description %> -->
