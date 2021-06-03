@@ -9,8 +9,14 @@ const LocalStrategy = require('passport-local').Strategy;
 const expressSession = require('express-session')
 
 //config
+try {
 
-const config = require('./config');
+	var config = require('./config');
+
+} catch (e) {
+	console.log('Could not import config. This probably means youre not working locally');
+	console.log(e)
+}
 
 //routes
 
@@ -32,15 +38,19 @@ const Comment = require('./models/comment');
 const User = require('./models/user');
 
 
-mongoose.connect(config.db.connection, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex : true});
-
+try {
+	mongoose.connect(config.db.connection, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex : true});
+} catch {
+	console.log('Couldnt connect using config. probably not working locally')
+	mongoose.connect(process.env.DB_CONNECTION_STRING,  {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex : true})
+}
 
 //boiler plate setup
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'));
 app.use(expressSession({
-	secret : 'oin40r34n98nlnf',
+	secret : process.env.ES_SECRET || config.expressSession.secret,
 	resave : false, 
 	saveUninitialized : false
 }))
@@ -71,6 +81,6 @@ app.use("/players/:id/comments", commentRoutes)
 app.use("/", mainRoutes)
 
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
 	console.log('Listening on 3000...')
 });
