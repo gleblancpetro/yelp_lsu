@@ -23,9 +23,11 @@
             <li><a class="dropdown-item" href="#">Track</a></li>
 			</ul>
         </li>
+		<% if (user) { %>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="/players/new">New Player</a>
         </li>
+		  <% } %>
 	   <%  if (user) { %>
 		<li class="nav-item">
           <a class="nav-link" aria-current="page" href="/logout">Log Out</a>
